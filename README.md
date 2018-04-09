@@ -4,6 +4,13 @@ The client from the go-angular websocket chat.
 
 The server can be found [here](https://github.com/williamfhe/go-angular-chat-server).
 
+## Functionalities
+
+* Choose a Username
+* Join a Channel
+* Talk with other users
+* Leave the channel
+* Get notifications when people join or leave the channel
 
 ## Installation
 
