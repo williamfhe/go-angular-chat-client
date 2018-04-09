@@ -18,12 +18,19 @@ Clone this repository
 
 ```bash
 git clone https://github.com/williamfhe/go-angular-chat-client.git
+cd go-angular-chat-client
 ```
 
 Install angular/cli
 
 ```bash
 npm install -g @angular/cli
+```
+
+Install dependencies
+
+```bash
+npm install
 ```
 
 ## Run local server
