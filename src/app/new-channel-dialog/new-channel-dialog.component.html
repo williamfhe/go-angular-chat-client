@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>New Channel</h1>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput autofocus #newChannelInput="ngModel" [(ngModel)]="channelName" pattern="[a-zA-Z0-9]{1,14}" (keydown.enter)="validate()" maxlength="14" placeholder="Channel Name">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button type="button" (click)="validate()">Validate</button>
+  <button mat-button type="button" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

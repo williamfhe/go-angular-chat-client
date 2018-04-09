@@ -1,0 +1,63 @@
+
+.chat-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    max-width: calc(100% - 16px);
+    max-height: calc(100% - 16px);
+}
+
+.card-container {
+    height: 100%;
+    padding: 0;
+}
+
+.sidenav-container {
+    height: 100%;
+    border: 1px solid rgba(111, 111, 111, 0.50);
+}
+
+.message-container {
+    overflow: auto;
+    height: calc(100% - 100px);
+    word-wrap: break-word;
+}
+
+.sidenav {
+    padding: 10px;
+    width: 200px;
+}
+
+.channel-sidenav-opener {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.user-sidenav-opener {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.message-content {
+    padding: 0 12px 0 12px;
+    margin: 0;
+}
+
+.message-user {
+    padding: 0 10px 0 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.message-form {
+    padding: 0 10px 0 10px;
+    width: calc(100% - 20px) !important;
+}
+
+.bot {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

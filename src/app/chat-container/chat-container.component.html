@@ -1,0 +1,73 @@
+<div class="chat-container">
+<mat-card class="card-container">
+
+  <mat-sidenav-container class="sidenav-container">
+
+    <mat-sidenav class="sidenav" opened #chanSide mode="side" role="region">
+      <div>
+        <button mat-icon-button (click)="chanSide.toggle()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+        <button style="float: right; margin-top: 3px;" mat-button (click)="leaveChannel(currentChannel.name)">
+          Leave<mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <mat-nav-list>
+        <mat-list-item (click)="openNewChannelDialog()">
+          Join Channel&nbsp;<mat-icon>add_circle_outline</mat-icon>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+        <ng-container *ngIf="currentChannel != null">
+          <mat-list-item (click)="changeChannel(i)" *ngFor="let chan of channelsNames; index as i;">
+            <mat-icon *ngIf="chan == currentChannel.name">keyboard_arrow_right</mat-icon>#{{chan | truncate:14}}
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </ng-container>
+      </mat-nav-list> 
+    </mat-sidenav>
+    
+    <mat-sidenav class="sidenav" opened #userSide mode="side" position="end" role="region">
+      <div style="text-align: right;">
+        <button mat-icon-button (click)="userSide.toggle()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+      </div>
+      <mat-nav-list>
+        <ng-container *ngIf="currentChannel != null">
+          <mat-list-item  *ngFor="let user of currentChannel.users">
+              @{{user | truncate:14}}
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </ng-container>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content role="main">
+
+      <div #msgZone class="message-container">
+
+        <button mat-icon-button class="channel-sidenav-opener" *ngIf="!chanSide.opened" (click)="chanSide.toggle()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+        <button mat-icon-button class="user-sidenav-opener" *ngIf="!userSide.opened" (click)="userSide.toggle()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+
+        <ng-container *ngIf="currentChannel != null">
+          <!-- Information Messages on the center and messages from other users are on the right -->
+          <div *ngFor="let msg of currentChannel.messages" [ngStyle]="msg.type == 'info' && {'text-align': 'center'} || msg.type != 'selfMessage' && {'text-align': 'right'}">
+            <p class="message-user">@{{ msg.user }}</p>
+            <p class="message-content">{{ msg.content }}</p>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="currentChannel == null">
+          <p style="text-align: center">Join a channel to start talking!</p>
+        </ng-container>
+
+      </div>
+
+      <div class="bot">
+        <mat-form-field class="message-form">
+          <textarea #msgInput matInput placeholder="What will you say ?" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="3" (keydown.enter)="sendMessage(msgInput); scroll(msgZone)"></textarea>
+        </mat-form-field>
+      </div>
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</mat-card>
+</div>

@@ -1,0 +1,10 @@
+
+<h1 mat-dialog-title>Choose a username</h1>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput required autofocus #usernameInput="ngModel" [(ngModel)]="username" (keydown.enter)="validate()" pattern="[a-zA-Z0-9]{1,14}" placeholder="Username">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button type="button" (click)="validate()">Validate</button>
+</mat-dialog-actions>
